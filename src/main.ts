@@ -1,12 +1,16 @@
+import { Capacitor } from "@capacitor/core";
+import {
+  type OrientationLockType,
+  ScreenOrientation,
+} from "@capacitor/screen-orientation";
+import { StatusBar } from "@capacitor/status-bar";
 import Phaser from "phaser";
 import GameScene from "./scenes/GameScene";
-import { getSizeByOrientation, type GameType, GameArea } from "./utils/area";
 import {
-  ScreenOrientation,
-  OrientationLockType,
-} from "@capacitor/screen-orientation";
-import { Capacitor } from "@capacitor/core";
-import { StatusBar } from "@capacitor/status-bar";
+  type GameArea,
+  type GameType,
+  getSizeByOrientation,
+} from "./utils/area";
 
 function isNativePlatform(): boolean {
   const platform = Capacitor.getPlatform();
@@ -50,8 +54,10 @@ function main(): void {
   console.log(JSON.stringify(GAME_AREA));
 
   // Update the scale configuration with the calculated dimensions
-  config.scale!.width = width;
-  config.scale!.height = height;
+  if (config.scale) {
+    config.scale.width = width || GAME_AREA.w;
+    config.scale.height = height || GAME_AREA.h;
+  }
 
   /**
    * Initialize the Phaser game instance.
