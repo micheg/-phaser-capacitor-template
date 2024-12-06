@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": "recommended",
+  "files": {
+    "ignoreUnknown": true
+  },
+  "rules": {
+    "typescript/explicit-function-return-type": "off",
+    "typescript/no-explicit-any": "warn",
+    "format/indent-style": "space",
+    "format/indent-width": 2
+  }
+}

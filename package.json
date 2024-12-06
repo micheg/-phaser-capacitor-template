@@ -1,0 +1,30 @@
+{
+	"name": "phaser-capacitor-template",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"prepare:dist": "mkdir -p dist/assets/images dist/assets/sounds",
+		"build": "vite build",
+		"serve": "vite preview",
+		"install:android": "npx cap add android && npm run build && npx cap sync android",
+		"lint": "biome check",
+		"fix": "biome check --write src",
+		"cap:sync": "npx cap sync",
+		"cap:open:ios": "npx cap open ios",
+		"cap:open:android": "npx cap open android"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"typescript": "~5.6.2",
+		"vite": "^6.0.1",
+		"vite-plugin-static-copy": "^2.2.0"
+	},
+	"dependencies": {
+		"@capacitor/android": "^6.2.0",
+		"@capacitor/cli": "^6.2.0",
+		"@capacitor/core": "^6.2.0",
+		"phaser": "^3.87.0"
+	}
+}
