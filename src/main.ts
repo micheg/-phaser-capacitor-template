@@ -1,11 +1,12 @@
 import Phaser from "phaser";
 import GameScene from "./scenes/GameScene";
-import { getSizeByOrientation, GameType, GameArea } from "./utils/area";
+import { getSizeByOrientation, type GameType, GameArea } from "./utils/area";
 import {
   ScreenOrientation,
   OrientationLockType,
 } from "@capacitor/screen-orientation";
 import { Capacitor } from "@capacitor/core";
+import { StatusBar } from "@capacitor/status-bar";
 
 function isNativePlatform(): boolean {
   const platform = Capacitor.getPlatform();
@@ -79,7 +80,8 @@ function main(): void {
 
 const mode: OrientationLockType = "landscape";
 if (isNativePlatform()) {
-  ScreenOrientation.lock({ orientation: mode }).then(() => {
+  ScreenOrientation.lock({ orientation: mode }).then(async () => {
+    await StatusBar.hide();
     main();
   });
 } else {
