@@ -6,11 +6,7 @@ import {
 import { StatusBar } from "@capacitor/status-bar";
 import Phaser from "phaser";
 import GameScene from "./scenes/GameScene";
-import {
-  type GameArea,
-  type GameType,
-  getSizeByOrientation,
-} from "./utils/area";
+import { type GameArea, GameType, getSizeByOrientation } from "./utils/area";
 
 function isNativePlatform(): boolean {
   const platform = Capacitor.getPlatform();
@@ -41,6 +37,8 @@ function main(): void {
     },
   };
 
+  const GAME_MODE = GameType.Portrait;
+
   /**
    * Calculate initial game dimensions and update configuration.
    */
@@ -49,7 +47,7 @@ function main(): void {
     height,
     GAME_AREA,
   }: { width: number; height: number; GAME_AREA: GameArea } =
-    getSizeByOrientation(GameType.Landscape);
+    getSizeByOrientation(GAME_MODE);
 
   console.log(JSON.stringify(GAME_AREA));
 
@@ -69,7 +67,7 @@ function main(): void {
    */
   function onResize(): void {
     // Recalculate the dimensions based on the current window size
-    const { width, height } = getSizeByOrientation(GameType.Landscape);
+    const { width, height } = getSizeByOrientation(GAME_MODE);
 
     // Resize the Phaser game canvas
     game.scale.resize(width, height);

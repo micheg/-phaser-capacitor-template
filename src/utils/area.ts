@@ -1,3 +1,5 @@
+const HORIZONTAL_SIZE = 480; // can be 720;
+const VERTICAL_SIZE = 854; // or can be 1280;
 /**
  * Interface representing the game area dimensions and aspect ratio.
  */
@@ -14,8 +16,8 @@ export interface GameArea {
  * Game area configuration for portrait orientation.
  */
 export const GAME_AREA_PORTRAIT: GameArea = {
-  w: 720,
-  h: 1280,
+  w: HORIZONTAL_SIZE,
+  h: VERTICAL_SIZE,
   factor: 9 / 16,
 };
 
@@ -23,8 +25,8 @@ export const GAME_AREA_PORTRAIT: GameArea = {
  * Game area configuration for landscape orientation.
  */
 export const GAME_AREA_LANDSCAPE: GameArea = {
-  w: 1280,
-  h: 720,
+  w: VERTICAL_SIZE,
+  h: HORIZONTAL_SIZE,
   factor: 16 / 9,
 };
 
