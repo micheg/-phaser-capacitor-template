@@ -5,7 +5,7 @@ import {
 } from "@capacitor/screen-orientation";
 import { StatusBar } from "@capacitor/status-bar";
 import Phaser from "phaser";
-import GameScene from "./scenes/GameScene";
+import LabyrinthScene from "./scenes/LabyrinthScene";
 import { type GameArea, GameType, getSizeByOrientation } from "./utils/area";
 
 function isNativePlatform(): boolean {
@@ -28,7 +28,7 @@ function main(): void {
         debug: true,
       },
     },
-    scene: [GameScene],
+    scene: [LabyrinthScene],
     scale: {
       mode: Phaser.Scale.FIT,
       autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -37,7 +37,7 @@ function main(): void {
     },
   };
 
-  const GAME_MODE = GameType.Portrait;
+  const GAME_MODE = GameType.Landscape;
 
   /**
    * Calculate initial game dimensions and update configuration.
